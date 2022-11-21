@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SistemaEmpleados.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+
+<form asp-action="Index">
+    <div class="form-row">
+        <div class="form-group col-md-1">
+            <label>Nombre:</label>
+        </div>
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" name="name" value="@ViewBag.name"/>
+        </div>
+        <div class="form-group col-md-1">
+            <label>Documento:</label>
+        </div>
+        <div class="form-group col-md-2">
+            <input type="text" class="form-control" name="document" value="@ViewBag.document" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Consultar" class="btn btn-outline-info"/>
+        </div>
+    </div>
+</form>
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Empleado</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Names)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surnames)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Document)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subarea)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Names)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surnames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Document)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subarea)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

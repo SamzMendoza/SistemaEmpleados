@@ -1,0 +1,77 @@
+﻿@model SistemaEmpleados.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Editar Empleado</h1>
+
+<h4>Empleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Names" class="control-label"></label>
+                <input asp-for="Names" class="form-control" />
+                <span asp-validation-for="Names" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surnames" class="control-label"></label>
+                <input asp-for="Surnames" class="form-control" />
+                <span asp-validation-for="Surnames" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentType" class="control-label"></label>
+                <input asp-for="DocumentType" class="form-control" />
+                <span asp-validation-for="DocumentType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Document" class="control-label"></label>
+                <input asp-for="Document" class="form-control" />
+                <span asp-validation-for="Document" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Area" class="control-label"></label>
+                <select required class="form-control" asp-for="Area">
+                    <option value="" selected hidden>Seleccionar área</option>
+                    <option value="Tecnologías de la información">Tecnologías de la información</option>
+                    <option value="Operaciones">Operaciones</option>
+                    <option value="Recursos Humanos">Recursos Humanos</option>
+                </select>
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subarea" class="control-label"></label>
+                <select required class="form-control" asp-for="Subarea">
+                    <option value="" selected hidden>Seleccionar subarea</option>
+                    <optgroup label="Tecnologías de la información">
+                        <option value="Soporte Técnico">Soporte Técnico</option>
+                        <option value="Desarrollo">Desarrollo</option>
+                    </optgroup>
+                    <optgroup label="Operaciones">
+                        <option value="Drivers">Drivers</option>
+                    </optgroup>
+                    <optgroup label="Recursos Humanos">
+                        <option value="Gestión de talentos">Gestión de talentos</option>
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Subarea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-dark">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
